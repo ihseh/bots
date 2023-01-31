@@ -13,9 +13,9 @@ def Create_World():
 
 def Create_Robot():
 	pyrosim.Start_URDF("body.urdf")
-	pyrosim.Send_Cube(name="Torso", pos=[x,y,z] , size=[length,width,height])
-	pyrosim.Send_Joint( name = "Torso_Leg" , parent= "Torso" , child = "Leg" , type = "revolute", position = [x+.5,y,z+.5])
-	pyrosim.Send_Cube(name="Leg", pos=[x+1,y,z+1] , size=[length,width,height])
+	pyrosim.Send_Cube(name="Link0", pos=[x,y,z] , size=[length,width,height])
+	pyrosim.Send_Joint( name = "Link0_Link1" , parent= "Link0" , child = "Link1" , type = "revolute", position = [x+.5,y,z+.5])
+	pyrosim.Send_Cube(name="Link1", pos=[x+.5,y,z] , size=[length,width,height])
 	pyrosim.End()
 
 
