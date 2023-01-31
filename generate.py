@@ -30,10 +30,10 @@ def Create_Robot():
 
 	#Robot for submission
 	pyrosim.Send_Cube(name="Backleg", pos=[x,y,z] , size=[length,width,height])
-	pyrosim.Send_Joint( name = "Backleg_Torso" , parent= "Backleg" , child = "Torso" , type = "revolute", position = [x,y+.5,z+.5])
-	pyrosim.Send_Cube(name="Torso", pos=[0,.5,.5] , size=[length,width,height])
-	pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [0,1,0])
-	pyrosim.Send_Cube(name="Frontleg", pos=[0,.5,-.5] , size=[length,width,height])
+	pyrosim.Send_Joint( name = "Backleg_Torso" , parent= "Backleg" , child = "Torso" , type = "revolute", position = [x+.5,y,z+.5])
+	pyrosim.Send_Cube(name="Torso", pos=[.5,0,.5] , size=[length,width,height])
+	pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [1,0,0])
+	pyrosim.Send_Cube(name="Frontleg", pos=[.5,0,-.5] , size=[length,width,height])
 
 
 	pyrosim.End()
