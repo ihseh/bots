@@ -4,7 +4,7 @@ width = 1
 height = 1
 x = 0
 y = 0
-z = .5
+z = 1.5
 
 def Create_World():
 	pyrosim.Start_SDF("world.sdf")
@@ -29,10 +29,10 @@ def Create_Robot():
 	# pyrosim.Send_Cube(name="Link6", pos=[0,0,-.5] , size=[length,width,height])
 
 	#Robot for submission
-	pyrosim.Send_Cube(name="Backleg", pos=[x,y,z] , size=[length,width,height])
-	pyrosim.Send_Joint( name = "Backleg_Torso" , parent= "Backleg" , child = "Torso" , type = "revolute", position = [x+.5,y,z+.5])
-	pyrosim.Send_Cube(name="Torso", pos=[.5,0,.5] , size=[length,width,height])
-	pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [1,0,0])
+	pyrosim.Send_Cube(name="Torso", pos=[x,y,z] , size=[length,width,height])
+	pyrosim.Send_Joint( name = "Torso_Backleg" , parent= "Torso" , child = "Backleg" , type = "revolute", position = [x-.5,y,z-.5])
+	pyrosim.Send_Cube(name="Backleg", pos=[-.5,0,-.5] , size=[length,width,height])
+	pyrosim.Send_Joint( name = "Torso_Frontleg" , parent= "Torso" , child = "Frontleg" , type = "revolute", position = [x+.5,0,z-.5])
 	pyrosim.Send_Cube(name="Frontleg", pos=[.5,0,-.5] , size=[length,width,height])
 
 
