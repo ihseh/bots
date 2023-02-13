@@ -12,9 +12,13 @@ planeId = p.loadURDF("plane.urdf")
 robotId = p.loadURDF("body.urdf")
 p.loadSDF("world.sdf")
 pyrosim.Prepare_To_Simulate(robotId)
-backLegSensorValues = np.zeros(1000)
-frontLegSensorValues = np.zeros(1000)
-for x in range(1000):
+length = 1000
+backLegSensorValues = np.zeros(length)
+frontLegSensorValues = np.zeros(length)
+a = np.linspace(0, 2*math.pi, length)
+targetAngles = np.array(math.pi/4 * np.sin(a))
+#np.save("data/targetAngles.npy", targetAngles)
+for x in range(length):
 	p.stepSimulation()
 	backLegSensorValues[x] = pyrosim.Get_Touch_Sensor_Value_For_Link("Backleg")
 	frontLegSensorValues[x] = pyrosim.Get_Touch_Sensor_Value_For_Link("Frontleg")
