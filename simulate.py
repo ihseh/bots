@@ -28,11 +28,13 @@ targetAngles_Backleg = np.array(amplitude_Backleg * np.sin(frequency_Backleg * a
 #FrontLeg
 amplitude_Frontleg = math.pi/4
 frequency_Frontleg = 10
-phaseOffset_Frontleg = 0
+phaseOffset_Frontleg = math.pi/8
 a_Frontleg = np.linspace(0, 2*math.pi, length)
 targetAngles_Frontleg = np.array(amplitude_Frontleg * np.sin(frequency_Frontleg * a_Frontleg + phaseOffset_Frontleg))
 
-#np.save("data/targetAngles.npy", targetAngles)
+#np.save("data/targetAnglesBackleg.npy", targetAngles_Backleg)
+#np.save("data/targetAnglesFrontleg.npy", targetAngles_Frontleg)
+
 #exit("OK LEAVING NOW. YEAH, I THINK IM GONNA LEAVE NOW.")
 for x in range(length):
 	p.stepSimulation()
@@ -50,7 +52,7 @@ for x in range(length):
 	controlMode = p.POSITION_CONTROL,
 	targetPosition = targetAngles_Frontleg[x],
 	maxForce = 100)
-	time.sleep(1/400)
+	time.sleep(1/600)
 	#print(x)
 p.disconnect()
 #print(backLegSensorValues)

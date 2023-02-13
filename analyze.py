@@ -7,9 +7,10 @@ import matplotlib.pyplot as matplotlib
 #matplotlib.plot(frontLegSensorValues, label = "Front Leg")
 
 
-targetAngles = np.load("data/targetAngles.npy")
-matplotlib.plot(targetAngles, label = "Target Angles", linewidth = 1)
-
+targetAnglesBackleg = np.load("data/targetAnglesBackleg.npy")
+targetAnglesFrontleg = np.load("data/targetAnglesFrontleg.npy")
+matplotlib.plot(targetAnglesBackleg, label = "Back Leg", linewidth = 1)
+matplotlib.plot(targetAnglesFrontleg, label = "Front Leg", linewidth = 1)
 
 matplotlib.legend()
 matplotlib.show()
