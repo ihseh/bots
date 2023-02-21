@@ -18,4 +18,8 @@ class SENSOR:
 
 	def Get_Value(self, t):
 		self.values[t] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
-		print(self.values)
+		#print(self.values)
+	
+	def Save_Values(self): #Modify
+		np.save("data/backLegSensorVals.npy", backLegSensorValues)
+		np.save("data/frontLegSensorVals.npy", frontLegSensorValues)

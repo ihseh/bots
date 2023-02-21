@@ -13,14 +13,3 @@ simulation = SIMULATION()
 simulation.Run()
 
 
-
-
-
-
-# #np.save("data/targetAnglesBackleg.npy", targetAngles_Backleg)
-# #np.save("data/targetAnglesFrontleg.npy", targetAngles_Frontleg)
-
-# np.save("data/backLegSensorVals.npy", backLegSensorValues)
-# np.save("data/frontLegSensorVals.npy", frontLegSensorValues)
-
-
