@@ -7,8 +7,15 @@ import math
 import random
 import constants as c
 
+
 class SENSOR:
 
-	def __init__(self):
+	def __init__(self, linkName):
 
-		pass
+		self.linkName = linkName
+		self.values = np.zeros(c.length)
+		#print(self.values)
+
+	def Get_Value(self, t):
+		self.values[t] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
+		print(self.values)

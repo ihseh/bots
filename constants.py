@@ -8,8 +8,6 @@ import random
 
 length = 1000
 
-backLegSensorValues = np.zeros(length)
-frontLegSensorValues = np.zeros(length)
 
 amplitude_Backleg = math.pi/4
 frequency_Backleg = 10

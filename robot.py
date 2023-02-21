@@ -6,6 +6,8 @@ import pyrosim.pyrosim as pyrosim
 import math
 import random
 import constants as c
+from sensor import SENSOR
+from motor import MOTOR
 
 class ROBOT:
 
@@ -19,5 +21,9 @@ class ROBOT:
 
     def Prepare_To_Sense(self):
                 self.sensors = {}
-                # for linkName in pyrosim.linkNamesToIndices:
-                #     print(linkName)
+                for linkName in pyrosim.linkNamesToIndices:
+                    self.sensors[linkName] = SENSOR(linkName)
+
+    def Sense(self, t):
+        for i in self.sensors:
+            self.sensors[i].Get_Value(t)
