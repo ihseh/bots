@@ -32,7 +32,7 @@ class SIMULATION:
           
           
           time.sleep(1/600)
-          print(x)
+          #print(x)
 
     def __del__(self):
 

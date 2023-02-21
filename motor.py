@@ -12,12 +12,19 @@ class MOTOR:
 	def __init__(self, jointName):
 		self.jointName = jointName
 		self.Prepare_To_Act()
+		#print(self.jointName)
 
 	def Prepare_To_Act(self):
-		
 		self.amplitude = c.amplitude
-		self.frequency = c.frequency
 		self.offset = c.phaseOffset
+
+		if ("Back" in str(self.jointName)):
+			self.frequency = c.frequency
+			print("1 -----")
+		else:
+			print("2 -----")
+			self.frequency = c.frequency * 2
+
 		a = np.linspace(0, 2*math.pi, c.length)
 		self.targetAngles = np.array(self.amplitude * np.sin(self.frequency * a + self.offset))
 
