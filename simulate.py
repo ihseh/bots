@@ -6,59 +6,62 @@ import pyrosim.pyrosim as pyrosim
 import math
 import random
 import constants as c
+from simulation import SIMULATION
 
-physicsClient = p.connect(p.GUI)
-p.setAdditionalSearchPath(pybullet_data.getDataPath())
-p.setGravity(0,0,-9.8)
-planeId = p.loadURDF("plane.urdf")
-robotId = p.loadURDF("body.urdf")
-p.loadSDF("world.sdf")
-pyrosim.Prepare_To_Simulate(robotId)
-length = 1000
-backLegSensorValues = np.zeros(length)
-frontLegSensorValues = np.zeros(length)
+simulation = SIMULATION()
 
-#Motor Values
+# physicsClient = p.connect(p.GUI)
+# p.setAdditionalSearchPath(pybullet_data.getDataPath())
+# p.setGravity(0,0,-9.8)
+# planeId = p.loadURDF("plane.urdf")
+# robotId = p.loadURDF("body.urdf")
+# p.loadSDF("world.sdf")
+# pyrosim.Prepare_To_Simulate(robotId)
+# length = 1000
+# backLegSensorValues = np.zeros(length)
+# frontLegSensorValues = np.zeros(length)
 
-#Backleg
-# amplitude_Backleg = math.pi/4
-# frequency_Backleg = 10
-# phaseOffset_Backleg = 0
-a_Backleg = np.linspace(0, 2*math.pi, length)
-targetAngles_Backleg = np.array(c.amplitude_Backleg * np.sin(c.frequency_Backleg * a_Backleg + c.phaseOffset_Backleg))
+# #Motor Values
 
-#FrontLeg
-# amplitude_Frontleg = math.pi/4
-# frequency_Frontleg = 10
-# phaseOffset_Frontleg = math.pi/8
-a_Frontleg = np.linspace(0, 2*math.pi, length)
-targetAngles_Frontleg = np.array(c.amplitude_Frontleg * np.sin(c.frequency_Frontleg * a_Frontleg + c.phaseOffset_Frontleg))
+# #Backleg
+# # amplitude_Backleg = math.pi/4
+# # frequency_Backleg = 10
+# # phaseOffset_Backleg = 0
+# a_Backleg = np.linspace(0, 2*math.pi, length)
+# targetAngles_Backleg = np.array(c.amplitude_Backleg * np.sin(c.frequency_Backleg * a_Backleg + c.phaseOffset_Backleg))
 
-#np.save("data/targetAnglesBackleg.npy", targetAngles_Backleg)
-#np.save("data/targetAnglesFrontleg.npy", targetAngles_Frontleg)
+# #FrontLeg
+# # amplitude_Frontleg = math.pi/4
+# # frequency_Frontleg = 10
+# # phaseOffset_Frontleg = math.pi/8
+# a_Frontleg = np.linspace(0, 2*math.pi, length)
+# targetAngles_Frontleg = np.array(c.amplitude_Frontleg * np.sin(c.frequency_Frontleg * a_Frontleg + c.phaseOffset_Frontleg))
 
-#exit("OK LEAVING NOW. YEAH, I THINK IM GONNA LEAVE NOW.")
-for x in range(length):
-	p.stepSimulation()
-	backLegSensorValues[x] = pyrosim.Get_Touch_Sensor_Value_For_Link("Backleg")
-	frontLegSensorValues[x] = pyrosim.Get_Touch_Sensor_Value_For_Link("Frontleg")
-	pyrosim.Set_Motor_For_Joint(
-	bodyIndex = robotId,
-	jointName = b'Torso_Backleg',
-	controlMode = p.POSITION_CONTROL,
-	targetPosition = targetAngles_Backleg[x],
-	maxForce = 100)
-	pyrosim.Set_Motor_For_Joint(
-	bodyIndex = robotId,
-	jointName = b'Torso_Frontleg',
-	controlMode = p.POSITION_CONTROL,
-	targetPosition = targetAngles_Frontleg[x],
-	maxForce = 100)
-	time.sleep(1/600)
-	#print(x)
-p.disconnect()
-#print(backLegSensorValues)
-np.save("data/backLegSensorVals.npy", backLegSensorValues)
-np.save("data/frontLegSensorVals.npy", frontLegSensorValues)
+# #np.save("data/targetAnglesBackleg.npy", targetAngles_Backleg)
+# #np.save("data/targetAnglesFrontleg.npy", targetAngles_Frontleg)
+
+# #exit("OK LEAVING NOW. YEAH, I THINK IM GONNA LEAVE NOW.")
+# for x in range(length):
+# 	p.stepSimulation()
+# 	backLegSensorValues[x] = pyrosim.Get_Touch_Sensor_Value_For_Link("Backleg")
+# 	frontLegSensorValues[x] = pyrosim.Get_Touch_Sensor_Value_For_Link("Frontleg")
+# 	pyrosim.Set_Motor_For_Joint(
+# 	bodyIndex = robotId,
+# 	jointName = b'Torso_Backleg',
+# 	controlMode = p.POSITION_CONTROL,
+# 	targetPosition = targetAngles_Backleg[x],
+# 	maxForce = 100)
+# 	pyrosim.Set_Motor_For_Joint(
+# 	bodyIndex = robotId,
+# 	jointName = b'Torso_Frontleg',
+# 	controlMode = p.POSITION_CONTROL,
+# 	targetPosition = targetAngles_Frontleg[x],
+# 	maxForce = 100)
+# 	time.sleep(1/600)
+# 	#print(x)
+# p.disconnect()
+# #print(backLegSensorValues)
+# np.save("data/backLegSensorVals.npy", backLegSensorValues)
+# np.save("data/frontLegSensorVals.npy", frontLegSensorValues)
 
 
