@@ -6,12 +6,13 @@ x = 0
 y = 0
 z = 1.5
 
-def Create_World():
+def Generate_Body():
+	#Create World
 	pyrosim.Start_SDF("world.sdf")
 	pyrosim.Send_Cube(name="Box", pos=[0,-5,z] , size=[length,width,height])
 	pyrosim.End()
 
-def Create_Robot():
+	#Create Body
 	pyrosim.Start_URDF("body.urdf")
 	#Robot From Slides
 	# pyrosim.Send_Cube(name="Link0", pos=[x,y,z] , size=[length,width,height])
@@ -39,5 +40,11 @@ def Create_Robot():
 	pyrosim.End()
 
 
-Create_World()
-Create_Robot()
+def Generate_Brain():
+	pyrosim.Start_NeuralNetwork("brain.nndf")
+	pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
+	
+	pyrosim.End()
+
+Generate_Body()
+Generate_Brain()
