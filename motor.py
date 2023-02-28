@@ -11,8 +11,6 @@ class MOTOR:
 
 	def __init__(self, jointName):
 		self.jointName = jointName
-		self.Prepare_To_Act()
-		#print(self.jointName)
 
 
 	def Set_Value(self, desiredAngle, ID):
