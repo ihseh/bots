@@ -41,7 +41,9 @@ class ROBOT:
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
 
                 #self.motors[jointName].Set_Value(desiredAngle, self.robotId) #doesn't work
-                for i in self.motors: #TO GET AROUND THE MOTOR KEY NOT ==ing THE JOINTNAME -> ONLY SEEMS TO WORK FOR ONE LEG AT ONCE, NEVER BOTH
+                #print("GHIHIHIHIHAIHGAIGHAIH")
+
+                #for i in self.motors: #TO GET AROUND THE MOTOR KEY NOT ==ing THE JOINTNAME -> ONLY SEEMS TO WORK FOR ONE LEG AT ONCE, NEVER BOTH
                     #print("HERE")
                     #print(i)
                     #print("JointName: " + jointName)
@@ -49,9 +51,9 @@ class ROBOT:
                     #if jointName in str(i): #THIS ONLY WORKS FOR ONE OF THE LEGS, I THINK
                         #print("MATCH")
                         #self.motors[i].Set_Value(desiredAngle, self.robotId)
-                    
-                    for i in self.motors: #Temporary, for submission video
-                        self.motors[i].Set_Value(desiredAngle, self.robotId)
+                print("REACHED TEMP SECTION")
+                for i in self.motors:#Temporary, for submission video
+                    self.motors[i].Set_Value(desiredAngle, self.robotId)
 
                 print(neuronName, jointName, desiredAngle)
 
