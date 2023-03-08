@@ -2,7 +2,7 @@
     <neuron name = "0" type = "sensor" linkName = "Torso" />
     <neuron name = "1" type = "sensor" linkName = "Backleg" />
     <neuron name = "2" type = "sensor" linkName = "Frontleg" />
-    <neuron name = "3" type = "motor"  jointName = "Torso_BackLeg" />
+    <neuron name = "3" type = "motor"  jointName = "Torso_Backleg" />
     <neuron name = "4" type = "motor"  jointName = "Torso_Frontleg" />
     <synapse sourceNeuronName = "0" targetNeuronName = "3" weight = "1.0" />
 </neuralNetwork>

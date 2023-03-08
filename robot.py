@@ -39,26 +39,10 @@ class ROBOT:
             if self.nn.Is_Motor_Neuron(neuronName):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
-
+                self.motors[bytes(jointName,'utf-8')].Set_Value(desiredAngle, self.robotId)
                 #self.motors[jointName].Set_Value(desiredAngle, self.robotId) #doesn't work
-                #print("GHIHIHIHIHAIHGAIGHAIH")
-
-                #for i in self.motors: #TO GET AROUND THE MOTOR KEY NOT ==ing THE JOINTNAME -> ONLY SEEMS TO WORK FOR ONE LEG AT ONCE, NEVER BOTH
-                    #print("HERE")
-                    #print(i)
-                    #print("JointName: " + jointName)
-                   # print("i: " + str(i))
-                    #if jointName in str(i): #THIS ONLY WORKS FOR ONE OF THE LEGS, I THINK
-                        #print("MATCH")
-                        #self.motors[i].Set_Value(desiredAngle, self.robotId)
-                print("REACHED TEMP SECTION")
-                for i in self.motors:#Temporary, for submission video
-                    self.motors[i].Set_Value(desiredAngle, self.robotId)
 
                 print(neuronName, jointName, desiredAngle)
-
-        #for i in self.motors:
-            #self.motors[i].Set_Value(t, self.robotId)
 
     def Think(self):
         self.nn.Update()
