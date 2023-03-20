@@ -9,7 +9,6 @@ import constants as c
 from simulation import SIMULATION
 import sys
 
-print(len(sys.argv))
 directOrGUI = sys.argv[1]
 solutionID = sys.argv[2]
 

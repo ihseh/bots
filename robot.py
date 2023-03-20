@@ -21,7 +21,8 @@ class ROBOT:
         self.Prepare_To_Act()
         self.nn = NEURAL_NETWORK("brain" + str(solID) + ".nndf")
         #delete the brain file
-        os.system("rm brain" + str(solID) + ".nndf")
+        self.solutionID = str(solID)
+        os.system("rm brain" + self.solutionID + ".nndf")
 
     def Prepare_To_Sense(self):
         self.sensors = {}
@@ -58,9 +59,11 @@ class ROBOT:
         xCoordinateOfLinkZero = positionOfLinkZero[0]
         
         #write to file
-        f = open("fitness.txt", "w")
+        f = open("tmp" + self.solutionID + ".txt" , "w")
         f.write(str(xCoordinateOfLinkZero))
         f.close()
+
+        os.system("mv tmp" + self.solutionID + ".txt fitness" + self.solutionID + ".txt")
 
         exit(" -- Exit from robot.Get_Fitness")
 
