@@ -53,9 +53,6 @@ def Generate_Brain():
 			randWeight = random.random()
 			pyrosim.Send_Synapse( sourceNeuronName = si , targetNeuronName = mi , weight = randWeight)
 
-
-
-
 	
 	pyrosim.End()
 

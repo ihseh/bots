@@ -20,3 +20,10 @@ phaseOffset = 0
 # frequency_Frontleg = 10
 # phaseOffset_Frontleg = math.pi/8
 
+length = 1
+width = 1
+height = 1
+x = 0
+y = 0
+z = 1.5
+
