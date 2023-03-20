@@ -7,17 +7,16 @@ import random
 
 class SOLUTION:
 
-	def __init__(self):
+	def __init__(self, ID):
 		self.weights = ((np.random.rand(3,2)) * 2) - 1
+		self.myID = ID
 
-	def Evaluate(self, runMode):
+	def Evaluate(self, directOrGUI):
 		self.Create_World()
 		self.Create_Body()
 		self.Create_Brain()
-		if(runMode == "DIRECT"):
-			os.system("python simulate.py direct")
-		else:
-			os.system("python simulate.py gui")
+		print(directOrGUI)
+		os.system("python simulate.py " + str(directOrGUI) + " &")
 
 		#read fitness value
 		f = open("fitness.txt", "r")
@@ -61,7 +60,8 @@ class SOLUTION:
 		self.weights[randRow,randCol] = random.random() * 2 - 1
 
 
-
+	def Set_ID(self, ID):
+		self.myID = ID
 
 
 

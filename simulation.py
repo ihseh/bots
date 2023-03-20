@@ -13,10 +13,9 @@ from robot import ROBOT
 class SIMULATION:
 
     def __init__(self, runMode):
-        
-        if (runMode == "direct"):
+        if (runMode == "DIRECT"):
             physicsClient = p.connect(p.DIRECT)
-        elif (runMode == "gui"):
+        elif (runMode == "GUI"):
             physicsClient = p.connect(p.GUI)
         else:
             print("INVALID RUN MODE")
