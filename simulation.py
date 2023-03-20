@@ -12,7 +12,7 @@ from robot import ROBOT
 
 class SIMULATION:
 
-    def __init__(self, runMode):
+    def __init__(self, runMode, solID):
         if (runMode == "DIRECT"):
             physicsClient = p.connect(p.DIRECT)
         elif (runMode == "GUI"):
@@ -24,7 +24,7 @@ class SIMULATION:
         p.setGravity(0,0,-9.8)
 
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solID)
 
 
     def Run(self):
