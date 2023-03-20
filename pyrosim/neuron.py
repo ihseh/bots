@@ -85,8 +85,8 @@ class NEURON:
 
 
     def Allow_Presynaptic_Neuron_To_Influence_Me(self, weight, value):
-        print("Weight = " + str(weight))
-        print("Value = " + str(value))
+        #print("Weight = " + str(weight))
+        #print("Value = " + str(value))
         result = weight * value
         self.Add_To_Value(result)
 # -------------------------- Private methods -------------------------

@@ -12,4 +12,6 @@ simulation = SIMULATION()
 
 simulation.Run()
 
+simulation.Get_Fitness()
+
 

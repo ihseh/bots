@@ -32,9 +32,14 @@ class SIMULATION:
           self.robot.Act(x)
           
           
-          time.sleep(1/1000)
+          time.sleep(1/3000)
           #print(x)
 
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
+        
     def __del__(self):
 
         p.disconnect()
+
+    
