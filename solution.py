@@ -10,11 +10,14 @@ class SOLUTION:
 	def __init__(self):
 		self.weights = ((np.random.rand(3,2)) * 2) - 1
 
-	def Evaluate(self):
+	def Evaluate(self, runMode):
 		self.Create_World()
 		self.Create_Body()
 		self.Create_Brain()
-		os.system("python simulate.py") #python vs python3?
+		if(runMode == "DIRECT"):
+			os.system("python simulate.py direct")
+		else:
+			os.system("python simulate.py gui")
 
 		#read fitness value
 		f = open("fitness.txt", "r")

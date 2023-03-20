@@ -12,10 +12,15 @@ from robot import ROBOT
 
 class SIMULATION:
 
-    def __init__(self):
+    def __init__(self, runMode):
         
-        
-        physicsClient = p.connect(p.GUI)
+        if (runMode == "direct"):
+            physicsClient = p.connect(p.DIRECT)
+        elif (runMode == "gui"):
+            physicsClient = p.connect(p.GUI)
+        else:
+            print("INVALID RUN MODE")
+            exit("EXITTING")
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)
 

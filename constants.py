@@ -6,7 +6,7 @@ import pyrosim.pyrosim as pyrosim
 import math
 import random
 
-simLength = 500
+simLength = 1000
 
 amplitude = math.pi/4
 frequency = 10
@@ -27,4 +27,4 @@ x = 0
 y = 0
 z = 1.5
 
-numberOfGenerations = 2
+numberOfGenerations = 15
