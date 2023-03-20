@@ -29,4 +29,4 @@ z = 1.5
 
 numberOfGenerations = 15
 
-populationSize = 2
+populationSize = 10
