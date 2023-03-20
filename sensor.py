@@ -13,7 +13,7 @@ class SENSOR:
 	def __init__(self, linkName):
 
 		self.linkName = linkName
-		self.values = np.zeros(c.length)
+		self.values = np.zeros(c.simLength)
 		#print(self.values)
 
 	def Get_Value(self, t):

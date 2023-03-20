@@ -6,7 +6,7 @@ import pyrosim.pyrosim as pyrosim
 import math
 import random
 
-length = 500
+simLength = 500
 
 amplitude = math.pi/4
 frequency = 10

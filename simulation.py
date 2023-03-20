@@ -25,14 +25,14 @@ class SIMULATION:
 
     def Run(self):
 
-        for x in range(c.length):
+        for x in range(c.simLength):
           p.stepSimulation()
           self.robot.Sense(x)
           self.robot.Think()
           self.robot.Act(x)
           
           
-          time.sleep(1/2000)
+          time.sleep(1/1000)
           #print(x)
 
     def __del__(self):
