@@ -43,7 +43,7 @@ class SOLUTION:
 		self.fitness = float(f.readline())
 		f.close()
 		
-		#print("FITNESS = " + str(self.fitness))
+		print("FITNESS = " + str(self.fitness))
 
 		#delete fitness file
 		os.system("rm fitness" + str(self.myID) + ".txt")
