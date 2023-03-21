@@ -27,6 +27,6 @@ x = 0
 y = 0
 z = 1.5
 
-numberOfGenerations = 15
+numberOfGenerations = 10
 
-populationSize = 2
+populationSize = 10

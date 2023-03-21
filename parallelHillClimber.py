@@ -28,11 +28,9 @@ class PARALLEL_HILL_CLIMBER:
 
 		self.Evaluate(self.children)
 
-		# self.Print()
+		self.Print()
 
-		# #exit(" -- EXIT from solution.Evolve_For_One_Generation")
-
-		# self.Select()
+		self.Select()
 
 	def Spawn(self):
 		self.children = {}
@@ -47,21 +45,30 @@ class PARALLEL_HILL_CLIMBER:
 
 	def Evaluate(self, solutions):
 		for key in solutions:
-			self.parents[key].Start_Simulation("DIRECT")
+			solutions[key].Start_Simulation("DIRECT")
 
 		for key in solutions:
-			self.parents[key].Wait_For_Simulation_To_End()
+			solutions[key].Wait_For_Simulation_To_End()
 
 
 	def Select(self):
-		#print(self.parent.fitness)
-		#print(self.child.fitness)
-		#exit(" -- EXIT from hillclimber.select")
-		if(self.parent.fitness > self.child.fitness):
-			self.parent = self.child
+		for key in self.parents:
+			if(self.parents[key].fitness > self.children[key].fitness):
+				self.parents[key] = self.children[key]
 
 	def Print(self):
-		print("Parent Fitness = " + str(self.parent.fitness) + ", Child Fitness = " + str(self.child.fitness))
+		print()
+		for key in self.parents:
+			print("Parent Fitness = " + str(self.parents[key].fitness) + ", Child Fitness = " + str(self.children[key].fitness))
+		print()
 
 	def Show_Best(self):
-		pass
+		self.best = self.parents[0]
+		for key in self.parents:
+			if self.parents[key].fitness < self.best.fitness:
+				self.best = self.parents[key]
+		print("BEST FITNESS: " + str(self.best.fitness))
+		self.best.Start_Simulation("GUI")
+
+
+
