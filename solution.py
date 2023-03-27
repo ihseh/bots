@@ -90,11 +90,22 @@ class SOLUTION:
 
 	def Create_Brain(self):
 		pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
-		pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
-		pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "Backleg")
-		pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "Frontleg")
+		pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "FrontLowerLeg")
+		pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLowerLeg")
+		pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "RightLowerLeg")
+		pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "LeftLowerLeg")
+
 		pyrosim.Send_Motor_Neuron( name = 3 , jointName = "Torso_Backleg")
 		pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_Frontleg")
+		pyrosim.Send_Motor_Neuron( name = 5 , jointName = "Torso_Rightleg")
+		pyrosim.Send_Motor_Neuron( name = 6 , jointName = "Torso_Leftleg")
+
+		pyrosim.Send_Motor_Neuron( name = 7 , jointName = "Frontleg_FrontLowerLeg")
+		pyrosim.Send_Motor_Neuron( name = 8 , jointName = "Backleg_BackLowerLeg")
+		pyrosim.Send_Motor_Neuron( name = 9 , jointName = "Leftleg_LeftLowerLeg")
+		pyrosim.Send_Motor_Neuron( name = 10 , jointName = "Rightleg_RightLowerLeg")
+
+
 		for row in range(c.numSensorNeurons):
 			for col in range(c.numMotorNeurons):
 				weight = self.weights[row,col]
