@@ -27,6 +27,9 @@ x = 0
 y = 0
 z = 1.5
 
-numberOfGenerations = 10
+numberOfGenerations = 1
 
-populationSize = 10
+populationSize = 1
+
+numSensorNeurons = 3
+numMotorNeurons = 2
