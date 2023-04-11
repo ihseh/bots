@@ -27,11 +27,11 @@ x = 0
 y = 0
 z = 1.5
 
-numberOfGenerations = 10
+numberOfGenerations = 12
 
-populationSize = 10
+populationSize = 15
 
-numSensorNeurons = 4
+numSensorNeurons = 5
 numMotorNeurons = 8
 
-motorJointRange = .2
+motorJointRange = .6

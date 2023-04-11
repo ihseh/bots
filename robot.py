@@ -24,6 +24,8 @@ class ROBOT:
         self.solutionID = str(solID)
         os.system("rm brain" + self.solutionID + ".nndf")
 
+        self.timeInAir = 0
+
     def Prepare_To_Sense(self):
         self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:
@@ -57,13 +59,18 @@ class ROBOT:
         # positionOfLinkZero = stateOfLinkZero[0]
         # xCoordinateOfLinkZero = positionOfLinkZero[0]
 
-        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
-        basePosition = basePositionAndOrientation[0]
-        xPosition = basePosition[0]
+        # basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
+        # basePosition = basePositionAndOrientation[0]
+        # xPosition = basePosition[0]
         
+
+
+
         #write to file
         f = open("tmp" + self.solutionID + ".txt" , "w")
-        f.write(str(xPosition))
+        # f.write(str(xPosition))
+        f.write(str(self.timeInAir))
+
         f.close()
 
         os.system("mv tmp" + self.solutionID + ".txt fitness" + self.solutionID + ".txt")

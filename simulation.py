@@ -30,14 +30,28 @@ class SIMULATION:
     def Run(self):
 
         for x in range(c.simLength):
-          p.stepSimulation()
-          self.robot.Sense(x)
-          self.robot.Think()
-          self.robot.Act(x)
+            p.stepSimulation()
+            self.robot.Sense(x)
+            self.robot.Think()
+            self.robot.Act(x)
+
+            sen1 = self.robot.sensors["FrontLowerLeg"].Get_Value(x)
+            sen2 = self.robot.sensors["BackLowerLeg"].Get_Value(x) 
+            sen3 = self.robot.sensors["LeftLowerLeg"].Get_Value(x)
+            sen4 = self.robot.sensors["RightLowerLeg"].Get_Value(x)   
+
+            # print(str(sen1) + str(sen2) + str(sen3) + str(sen4))
+
+            if (sen1 == sen2) and  (sen3 == sen4) and (sen1 == -1):
+                self.robot.timeInAir += 1
+                # print("(IN AIR)")
+            # else:
+                # print("NOT IN AIR")
+
           
-          
-          time.sleep(1/3000)
-          #print(x)
+            time.sleep(1/3000)
+
+            #print(x)
 
     def Get_Fitness(self):
         self.robot.Get_Fitness()
