@@ -26,6 +26,9 @@ class SIMULATION:
         self.world = WORLD()
         self.robot = ROBOT(solID)
 
+        self.runMode = runMode
+        self.robot.runMode = runMode
+
 
     def Run(self):
 
@@ -35,14 +38,28 @@ class SIMULATION:
             self.robot.Think()
             self.robot.Act(x)
 
-            sen1 = self.robot.sensors["FrontLowerLeg"].Get_Value(x)
-            sen2 = self.robot.sensors["BackLowerLeg"].Get_Value(x) 
-            sen3 = self.robot.sensors["LeftLowerLeg"].Get_Value(x)
-            sen4 = self.robot.sensors["RightLowerLeg"].Get_Value(x)  
-            sen5 = self.robot.sensors["Torso"].Get_Value(x)  
+            # sen1 = self.robot.sensors["FrontLowerLeg"].Get_Value(x)
+            # sen2 = self.robot.sensors["BackLowerLeg"].Get_Value(x)
+            # sen3 = self.robot.sensors["LeftLowerLeg"].Get_Value(x)
+            # sen4 = self.robot.sensors["RightLowerLeg"].Get_Value(x)
+            # sen5 = self.robot.sensors["Torso"].Get_Value(x)
 
-            if (sen1 == -1) and (sen2 == -1) and (sen3 == -1) and (sen4 == -1) and (sen5 == -1):
-                self.robot.timeInAir += 1
+            # if (sen1 == -1) and (sen2 == -1) and (sen3 == -1) and (sen4 == -1) and (sen5 == -1):
+            #     if self.runMode == "GUI":
+            #         print("IN AIR")
+            #     self.robot.timeInAir += 1
+            #     self.robot.currentJump += 1
+            #     if self.robot.currentJump > self.robot.longestJump:
+            #         self.robot.longestJump = self.robot.currentJump
+            # else:
+            #     if self.runMode == "GUI":
+            #         print("NOT IN AIR")
+            #     self.robot.currentJump = 0
+
+            # if self.runMode == "GUI":
+            #     print(f"currentJump = {self.robot.currentJump}")
+            #     print(f"longestJump = {self.robot.longestJump}")
+            #     print(f"total timeInAir = {self.robot.timeInAir}")
 
             time.sleep(1/3000)
 

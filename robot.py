@@ -25,6 +25,9 @@ class ROBOT:
         os.system("rm brain" + self.solutionID + ".nndf")
 
         self.timeInAir = 0
+        self.longestJump = 0
+        self.currentJump = 0
+        self.runMode = "DEFAULT?"
 
     def Prepare_To_Sense(self):
         self.sensors = {}
@@ -55,21 +58,43 @@ class ROBOT:
         #self.nn.Print()
 
     def Get_Fitness(self):
-        # stateOfLinkZero = p.getLinkState(self.robotId,0)
-        # positionOfLinkZero = stateOfLinkZero[0]
-        # xCoordinateOfLinkZero = positionOfLinkZero[0]
 
-        # basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
-        # basePosition = basePositionAndOrientation[0]
-        # xPosition = basePosition[0]
-        
+        for x in range(c.simLength):
+            sen1 = self.sensors["FrontLowerLeg"].values[x]
+            sen2 = self.sensors["BackLowerLeg"].values[x]      
+            sen3 = self.sensors["LeftLowerLeg"].values[x]
+            sen4 = self.sensors["RightLowerLeg"].values[x]
+            # sen5 = self.sensors["Torso"].values[x]
+
+            # if (sen1 == -1) and (sen2 == -1) and (sen3 == -1) and (sen4 == -1) and (sen5 == -1):
+            if (sen1 == -1) and (sen2 == -1) and (sen3 == -1) and (sen4 == -1):
+
+                if self.runMode == "GUI":
+                    print("IN AIR")
+                self.timeInAir += 1
+                self.currentJump += 1
+                if self.currentJump > self.longestJump:
+                    self.longestJump = self.currentJump
+            else:
+                if self.runMode == "GUI":
+                    print("ON GROUND")
+                self.currentJump = 0
+                self.timeInAir -= .5
+
+            if self.runMode == "GUI":
+                print(f"currentJump = {self.currentJump}")
+                print(f"longestJump = {self.longestJump}")
+                print(f"total timeInAir = {self.timeInAir}")
 
 
-
-        #write to file
         f = open("tmp" + self.solutionID + ".txt" , "w")
-        # f.write(str(xPosition))
-        f.write(str(self.timeInAir))
+
+        # print(f"timeInAir = {self.timeInAir}")
+        # print(f"longestJump = {self.longestJump}")
+        fitness = self.timeInAir + (self.longestJump*2)
+
+        f.write(str(fitness))
+        # f.write(str(self.timeInAir))
 
         f.close()
 
